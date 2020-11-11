@@ -23,9 +23,9 @@
   <td id="projectlogo"><img alt="Logo" src="pngwing.com.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Lab 2 Semaphores
-   &#160;<span id="projectnumber">0.1324</span>
+   &#160;<span id="projectnumber">v0.54231</span>
    </div>
-   <div id="projectbrief">Use semaphores to control the flow of threads</div>
+   <div id="projectbrief">Learn to use semaphores to control the flow of threads</div>
   </td>
  </tr>
  </tbody>
@@ -91,22 +91,22 @@ $(function() {
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;second&quot;</span>&lt;&lt;std::endl;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="main_8cpp.html#a6288eba0f8e8ad3ab1544ad731eb7667">   61</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#a6288eba0f8e8ad3ab1544ad731eb7667">main</a>(<span class="keywordtype">void</span>){</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  std::thread threadOne, threadTwo;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  std::shared_ptr&lt;Semaphore&gt; sem( <span class="keyword">new</span> <a class="code" href="class_semaphore.html">Semaphore</a>());</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">int</span> taskOneDelay=5;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  threadOne=std::thread(<a class="code" href="main_8cpp.html#ae4ea9570be601d182fa473c7ca431852">taskTwo</a>,sem);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  threadTwo=std::thread(<a class="code" href="main_8cpp.html#a2b4729d561c345111ccab970fe11e229">taskOne</a>,sem,taskOneDelay);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Launched from the main\n&quot;</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  threadOne.join();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  threadTwo.join();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="main_8cpp.html#a6288eba0f8e8ad3ab1544ad731eb7667">   64</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#a6288eba0f8e8ad3ab1544ad731eb7667">main</a>(<span class="keywordtype">void</span>){</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  std::thread threadOne, threadTwo;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  std::shared_ptr&lt;Semaphore&gt; sem( <span class="keyword">new</span> <a class="code" href="class_semaphore.html">Semaphore</a>());</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordtype">int</span> taskOneDelay=5;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  threadOne=std::thread(<a class="code" href="main_8cpp.html#ae4ea9570be601d182fa473c7ca431852">taskTwo</a>,sem);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  threadTwo=std::thread(<a class="code" href="main_8cpp.html#a2b4729d561c345111ccab970fe11e229">taskOne</a>,sem,taskOneDelay);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Launched from the main\n&quot;</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  threadOne.join();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  threadTwo.join();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="amain_8cpp_html_a2b4729d561c345111ccab970fe11e229"><div class="ttname"><a href="main_8cpp.html#a2b4729d561c345111ccab970fe11e229">taskOne</a></div><div class="ttdeci">void taskOne(std::shared_ptr&lt; Semaphore &gt; theSemaphore, int delay)</div><div class="ttdoc">This function will sleep and then make print screen the message &quot;I must print first&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00029">main.cpp:29</a></div></div>
 <div class="ttc" id="a_semaphore_8h_html"><div class="ttname"><a href="_semaphore_8h.html">Semaphore.h</a></div></div>
 <div class="ttc" id="amain_8cpp_html_ae4ea9570be601d182fa473c7ca431852"><div class="ttname"><a href="main_8cpp.html#ae4ea9570be601d182fa473c7ca431852">taskTwo</a></div><div class="ttdeci">void taskTwo(std::shared_ptr&lt; Semaphore &gt; theSemaphore)</div><div class="ttdoc">This function will print screen the message &quot;This will appear second&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00047">main.cpp:47</a></div></div>
-<div class="ttc" id="amain_8cpp_html_a6288eba0f8e8ad3ab1544ad731eb7667"><div class="ttname"><a href="main_8cpp.html#a6288eba0f8e8ad3ab1544ad731eb7667">main</a></div><div class="ttdeci">int main(void)</div><div class="ttdoc">main function of the program, creates and runs 2 threads In the main function we create 2 threads and...</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00061">main.cpp:61</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a6288eba0f8e8ad3ab1544ad731eb7667"><div class="ttname"><a href="main_8cpp.html#a6288eba0f8e8ad3ab1544ad731eb7667">main</a></div><div class="ttdeci">int main(void)</div><div class="ttdoc">main function of the program, creates and runs 2 threads In the main function we create 2 threads and...</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00064">main.cpp:64</a></div></div>
 <div class="ttc" id="aclass_semaphore_html"><div class="ttname"><a href="class_semaphore.html">Semaphore</a></div><div class="ttdoc">A Semaphore Implementation.</div><div class="ttdef"><b>Definition:</b> <a href="_semaphore_8h_source.html#l00014">Semaphore.h:14</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

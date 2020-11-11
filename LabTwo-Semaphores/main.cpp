@@ -58,6 +58,9 @@ void taskTwo(std::shared_ptr<Semaphore> theSemaphore){
     \brief main function of the program, creates and runs 2 threads
     In the main function we create 2 threads and a semaphore
 */
+/*! \var int taskOneDelay 
+    \brief variable used to signify how long thread two will sleep for 
+  */
 int main(void){
   std::thread threadOne, threadTwo;
   std::shared_ptr<Semaphore> sem( new Semaphore());
