@@ -1,43 +1,68 @@
+/*! \mainpage Lab 5 Reusable Barriers
+    \author Derry Brennan 
+    \date 8/11/2020
+    \copyright This code is covered by the GNU General Public License v3.0
+    \name Reusable Barriers
+    Using C++ Semaphores to make a mutex and a turnstile to construct a reusable barrier
+    to allow the rendezvous of N threads that will work inside a loop
+*/
 #include "Barrier.h"
 #include "Semaphore.h"
 #include <iostream>
 #include <thread>
 #include <vector>
- 
+/*! \class Reusable Barriers
+    \brief An Implementation of a Reusable Barriers using Semaphores
+
+    Using C++ Semaphores to make a mutex and a turnstile to construct a reusable barrier
+    to allow the rendezvous of N threads that will work inside a loop
+*/
 
 static const int num_threads = 100;
 int sharedVariable=0;
 int barrierCount;
 
+/*! \fn void barrierTask(std::shared_ptr<Semaphore> mutex, std::shared_ptr<Semaphore> first, std::shared_ptr<Semaphore> second, int numThread)
+    \brief This function will have a given number of threads (num_threads) enter and all threads will print out their number and wait until all have arrived 
+    before each print out a "B" and then loop around and do it again
+    \param mutex a mutex lock used to restrict access to critical section of code
+    \param first the first of 2 Semaphores used in conjunction to form a turnstile effect on the threads, initialized to 0
+    \param second the second of 2 Semaphores used in conjunction to form a turnstile effect on the threads, initialized to 1
+    \param numThread the unique number assigned to each thread, from 1 to num_threads, used to print to screen
 
+    Each thread enters and prints out its unique number to the screen
+    then using a mutex lock each thread in turn will increment the global 
+    variable barrier count and check to see if they are the last thread to this section (if (barrierCount == num_threads))
+    all other threads but the last thread will wait at the first "first->Wait()" until the last thread meets the if statments condition (if (barrierCount == num_threads)).
+    The last thread will then signal first and each thread will 
+
+*/
 void barrierTask(std::shared_ptr<Semaphore> mutex, std::shared_ptr<Semaphore> first, std::shared_ptr<Semaphore> second, int numThread)
 {
   //Do first bit of task
   for (int i = 0; i < 2; i++)
   {
-    //rendezvous
     std::cout << numThread << " ";
     mutex->Wait();
     barrierCount++;
     if (barrierCount == num_threads)
     {
       std::cout << std::endl;
-      second->Wait();
-      first->Signal();
+      second->Wait();   // close 2nd door
+      first->Signal();  // open 1st door
     }
     mutex->Signal();
     first->Wait();
     first->Signal();
-    // critical point
     mutex->Wait();
     --barrierCount;
     if (barrierCount == 0)
     {
-      first->Wait();
-      second->Signal();
+      first->Wait();    //close first door
+      second->Signal(); // open 2nd door
     }
     //Do second half of task
-    std::cout<< "B";
+    std::cout << "B";
     if (barrierCount == 0)
     {
       std::cout<< std::endl;

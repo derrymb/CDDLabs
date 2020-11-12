@@ -50,6 +50,8 @@
 class Barrier
 {
     private:
+        std::shared_ptr<Semaphore> first( new Semaphore(0));
+        std::shared_ptr<Semaphore> second( new Semaphore(1));
         std::shared_ptr<Semaphore> mutexSem (new Semaphore(1));
         std::condition_variable mCond;
         std::size_t mCount;
