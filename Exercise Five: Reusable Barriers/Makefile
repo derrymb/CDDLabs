@@ -15,7 +15,7 @@ OBJFILES = main.o Semaphore.o
 ALL: $(OBJFILES)
 	$(CC) -o barrier $(OBJFILES) $(CFLAGS) $(DEBUGFLAGS)
 
-DEBUG: DEBUGFLAGS = -DDEBUG
+DEBUG: DEBUGFLAGS = -DDEBUG -Wall
 DEBUG: ALL
 
 #this is customary and just deletes all .o files

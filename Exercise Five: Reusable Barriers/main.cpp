@@ -34,7 +34,9 @@ int barrierCount;
     then using a mutex lock each thread in turn will increment the global 
     variable barrier count and check to see if they are the last thread to this section (if (barrierCount == num_threads))
     all other threads but the last thread will wait at the first "first->Wait()" until the last thread meets the if statments condition (if (barrierCount == num_threads)).
-    The last thread will then signal first and each thread will 
+    The last thread will then signal first and each thread will wake the previous
+    Then we repeat the same steps to see tha last thread to get to the second section with the conditional  if (barrierCount == 0)
+    the last thread in here will wake up a sleeping thread and everyone will move on again to the next loop
 
 */
 void barrierTask(std::shared_ptr<Semaphore> mutex, std::shared_ptr<Semaphore> first, std::shared_ptr<Semaphore> second, int numThread)
