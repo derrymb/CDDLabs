@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['barrier_24',['Barrier',['../class_barrier.html#ab41e29a2fcf630435dd135664a7fe9e0',1,'Barrier::Barrier(std::size_t count)'],['../class_barrier.html#a7290fb8952d0f7779b8d6a7a34bbd407',1,'Barrier::Barrier(int numThreads)']]],
-  ['barriertask_25',['barrierTask',['../main_8cpp.html#a7e4c5334bcee34c0779e2a6429ff615f',1,'main.cpp']]]
+  ['barrier_29',['Barrier',['../class_barrier.html#a4d825874d4435fb6d7c741fa4d2b540d',1,'Barrier']]],
+  ['barriertask1_30',['barrierTask1',['../main_8cpp.html#a8699d5ff27b11cd94c3e2a948c70195e',1,'main.cpp']]],
+  ['barriertask2_31',['barrierTask2',['../main_8cpp.html#acd48ef61d965767341cd126b0dcb9e9d',1,'main.cpp']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ebarrier_15',['~Barrier',['../class_barrier.html#aa913b6dd26448ae765d581a276749860',1,'Barrier']]]
+  ['wait_18',['Wait',['../class_semaphore.html#a72aabebf026e3a8b1f3e4d0fa8ee1eda',1,'Semaphore::Wait()'],['../class_semaphore.html#a7f700173ae86ae623684109066e07656',1,'Semaphore::Wait(const std::chrono::duration&lt; R, P &gt; &amp;crRelTime)'],['../class_barrier.html#a83a9d2e85e98b3d2081538bf0da29b60',1,'Barrier::wait()']]]
 ];

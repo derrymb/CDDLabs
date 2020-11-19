@@ -7,7 +7,7 @@
 
 CC = g++
 CFLAGS = -std=c++11 -pthread
-OBJFILES = main.o Semaphore.o
+OBJFILES = main.o Semaphore.o Barrier.o
 #This rule says that each .o file depends on a .cpp file of the same name
 %.o: %.cpp
 	$(CC) -c -o $@ $< $(CFLAGS) $(DEBUGFLAGS)

@@ -1,8 +1,6 @@
 var files_dup =
 [
-    [ "Barrier.cpp", "_barrier_8cpp.html", [
-      [ "Barrier", "class_barrier.html", "class_barrier" ]
-    ] ],
+    [ "Barrier.cpp", "_barrier_8cpp.html", null ],
     [ "Barrier.h", "_barrier_8h.html", [
       [ "Barrier", "class_barrier.html", "class_barrier" ]
     ] ],

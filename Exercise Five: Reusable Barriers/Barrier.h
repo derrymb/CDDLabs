@@ -1,59 +1,41 @@
-/* Barrier.h --- Barrier.h
- * 
- * Filename: Barrier.h
- * Description: 
- * Author: Joseph
- * Maintainer: 
- * Created: Tue Jan  8 12:12:03 2019 (+0000)
- * Version: 
- * Package-Requires: ()
- * Last-Updated: Tue Jan  8 12:15:54 2019 (+0000)
- *           By: Joseph
- *     Update #: 2
- * URL: 
- * Doc URL: 
- * Keywords: 
- * Compatibility: 
- * 
- */
+/*! \mainpage Lab 5 Reusable Barriers
+    \author Derry Brennan 
+    \date 19/11/2020
+    \copyright This code is covered by the GNU General Public License v3.0
+    \name Reusable Barriers
 
-/* Commentary: 
- * 
- * 
- * 
- */
+    Using C++ Semaphores to make a mutex and a turnstile to construct a reusable barrier
+    to allow the rendezvous of N threads that will work inside a loop
+*/
+/*!
+    \file Barrier.h
+    \brief the definitions of the Barrier class 
+    \var int numThreads  the number of threads the barrier will work with
+    \var Semaphore first{0} the first semaphore used as a turnstile in conjunction with second. Initilased to 0
+    \var Semaphore second{1} the second semaphore used as a turnstile in conjunction with first. Initilased to 1
+    \var Semaphore mutexSem{1} the semaphore used as a mutex lock. Initilased to 1 to allow the first thread to pass through and not wait,
+    but all others must wait until the thread in the critical section finishes and signals the next
+    \var int barrierCount = 0 a counter used to determine the last thread through each phase
 
-/* Change Log:
- * 
- * 
- */
-
-/* This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or (at
- * your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-/* Code: */
+    Constructor, Destructor, phaseOne(), phaseTwo(), and Wait() functions of the Barrier class
+*/
 #pragma once
-class Barrier
-{
+#include "Semaphore.h"
+
+
+class Barrier{
   int numThreads;
+  Semaphore first{0};
+  Semaphore second{1};
+  Semaphore mutexSem{1};
+  int barrierCount = 0;
   public:
-    Barrier(int numThreads);
+    Barrier(int totalThreads):numThreads(totalThreads){};
     virtual ~Barrier();
     void wait();
-  private: 
-    int barCount;
+    void phaseOne();
+    void phaseTwo();
 };
 
 
-/* Barrier.h ends here */
+

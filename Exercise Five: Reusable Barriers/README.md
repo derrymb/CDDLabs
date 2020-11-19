@@ -1,10 +1,26 @@
-The README file is a text file that explains what a project is.
-It should contain information on
+# License:        
+This code is covered by the GNU General Public License v3.0
+# Author:         
+Derry Brennan
+# Install:
+```        
+make
+./barrier
+```
+# Dependencies:   
+```
+g++
+make
+```
+# TODO:           
+figure out how to use \var in doxygen and just how to comment properly
+# Files:          
+*main.cpp contains the threads that we want to order the flow of control of
+*Semaphore.cpp contains the class semaphore and its functions
+*Semaphore.h contains the c++ header for the implementation of semaphores
+*barrier.cpp contains the barrier class upon implementation
+*barrier.h c++ header file for the barrier class
 
-1. Project Licence
-2. Authors of Project
-3. How to install project
-4. List of any required Libraries, platform issues, etc.
-5. TO DO section listing items that need to be completed (errors, missing features etc.)
-6. List of files and what they contain
-7. Any other relevent information
+# Info:           
+this lab was to get us to understand how to use semaphores to order the flow of threads \
+using semaphore.Wait() and semaphore.Signal() to order the threads how we want then to run

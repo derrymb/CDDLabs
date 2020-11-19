@@ -1,76 +1,84 @@
-// Barrier.cpp --- 
-// 
-// Filename: Barrier.cpp
-// Description: Implementation of a barrier using semaphores
-// Author: Derry Brennan
-// Maintainer: Derry Brennan
-// Created: Tue Jan  8 12:14:02 2019 (+0000)
-// Version: 
-// Package-Requires: ()
-// Last-Updated: Tue Jan  8 12:15:21 2019 (+0000)
-//           By: Joseph
-//     Update #: 2
-// URL: 
-// Doc URL: 
-// Keywords: 
-// Compatibility: 
-// 
-// 
+/*! \mainpage Lab 5 Reusable Barriers
+    \author Derry Brennan 
+    \date 19/11/2020
+    \copyright This code is covered by the GNU General Public License v3.0
+    \name Reusable Barriers
 
-// Commentary: 
-// 
-// 
-// 
-// 
+    Using C++ Semaphores to make a mutex and a turnstile to construct a reusable barrier
+    to allow the rendezvous of N threads that will work inside a loop
+*/
+/*!
+    \file Barrier.cpp
+    \brief the functions of the Barrier class
 
-// Change Log:
-// 
-// 
-// 
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or (at
-// your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
-// 
-// 
-
+    Destructor, phaseOne(), phaseTwo(), and Wait() functions of the Barrier class
+*/
 // Code:
 #include "Semaphore.h"
 #include "Barrier.h"
+#include <iostream>
 
-class Barrier
+/*!
+    \fn Barrier::~Barrier()
+    \brief destructor function of barrier
+
+    Barrier destructor
+*/
+Barrier::~Barrier()
 {
-    private:
-        std::shared_ptr<Semaphore> first( new Semaphore(0));
-        std::shared_ptr<Semaphore> second( new Semaphore(1));
-        std::shared_ptr<Semaphore> mutexSem (new Semaphore(1));
-        std::condition_variable mCond;
-        std::size_t mCount;
-    public:
-        explicit Barrier(std::size_t count) : mCount(count) { }
-           
-    void Wait()
-    {
-        std::unique_lock<std::mutex> lock(mMutex);
-        if (--mCount == 0)
-        {
-            mCond.notify_all();
-        }
-        else
-        {
-            mCond.wait(lock, [this] {return mCount ==0;})
-        }
-    }
-};
+    //Nothing to do here
+}
+/*!
+    \fn void Barrier::phaseOne()
+    \brief The first phase of the rendezvous between n threads
 
-// 
+    Using semaphores and mutex lock order the flow of all threads to wait at the end for the last thread to be ready before moving on
+*/
+void Barrier::phaseOne()
+{
+    mutexSem.Wait();
+    ++barrierCount;
+    if (barrierCount == numThreads)
+    {
+      std::cout << std::endl;
+      second.Wait();   // close 2nd door
+      first.Signal();  // open 1st door
+    }
+    mutexSem.Signal();
+    first.Wait();
+    first.Signal();
+}
+/*!
+    \fn void Barrier::phaseTwo()
+    \brief The second phase of the rendezvous between n threads
+
+    sing semaphores and mutex lock order the flow of all threads to wait at the end for the last thread to be ready before moving on
+*/
+void Barrier::phaseTwo()
+{
+    mutexSem.Wait();
+    --barrierCount;
+    if (barrierCount == 0)
+    {
+      first.Wait();    //close first door
+      second.Signal(); // open 2nd door
+    }
+    if (barrierCount == 0)
+    {
+      std::cout<< std::endl;
+    }
+    mutexSem.Signal();
+    second.Wait();
+    second.Signal();
+}
+/*!
+    \fn void Barrier::wait()
+    \brief The wait function runs phaseOne() and phaseTwo() sequentially 
+
+*/
+void Barrier::wait()
+{
+    phaseOne();
+    phaseTwo();
+}
 // Barrier.cpp ends here
