@@ -18,4 +18,4 @@ nothing left to do that i can remember (feed the cat maybe)
 * Semaphore.h (C++ header file for the semaphore class)
 * Makefile (used for quick compilation of the code)
 # Relevent information
-Nothing that comes to mind
+A brief example of how to use a semaphore to achieve mutual exclusion, setting its initial value to 1, the using wait() before signal() around critical section

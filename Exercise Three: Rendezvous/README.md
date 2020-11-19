@@ -18,4 +18,4 @@ nothing left to do that i can remember (feed the cat maybe)
 * Semaphore.h (C++ header file for the semaphore class)
 * Makefile (used for quick compilation of the code)
 # Relevent information
-Nothing that comes to mind
+This lab was about using semaphores to organise a rendezvous between two threads. Both do their first section, before both move on to the second phase

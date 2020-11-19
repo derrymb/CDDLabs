@@ -22,5 +22,4 @@ figure out how to use \var in doxygen and just how to comment properly
 *barrier.h c++ header file for the barrier class
 
 # Info:           
-this lab was to get us to understand how to use semaphores to order the flow of threads \
-using semaphore.Wait() and semaphore.Signal() to order the threads how we want then to run
+Create a barrier class using semaphores that will allow us to organise a rendezvous between n threads
