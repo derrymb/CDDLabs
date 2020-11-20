@@ -7,6 +7,12 @@
     Using C++ Semaphores to make a mutex and a turnstile to construct a reusable barrier
     to allow the rendezvous of N threads that will work inside a loop
 */
+/*! \class Barrier
+    \brief An Implementation of a Reusable Barriers using Semaphores
+
+    Using C++ Semaphores to make a mutex and a turnstile to construct a reusable barrier
+    to allow the rendezvous of N threads that will work inside a loop
+*/
 /*!
     \file Barrier.cpp
     \brief the functions of the Barrier class

@@ -106,6 +106,9 @@ Reusable Barriers</h2></td></tr>
 <tr class="memitem:acd48ef61d965767341cd126b0dcb9e9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#acd48ef61d965767341cd126b0dcb9e9d">barrierTask2</a> (std::shared_ptr&lt; <a class="el" href="class_barrier.html">Barrier</a> &gt; theBarrier, int numLoops)</td></tr>
 <tr class="memdesc:acd48ef61d965767341cd126b0dcb9e9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will have a given number of threads (num_threads) enter and all threads will print out their number and wait until all have arrived before each print out a "B" and then loop around and do it again.  <a href="main_8cpp.html#acd48ef61d965767341cd126b0dcb9e9d">More...</a><br /></td></tr>
 <tr class="separator:acd48ef61d965767341cd126b0dcb9e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bb21cc2f9b91b3c1da6c9da90543387"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a7bb21cc2f9b91b3c1da6c9da90543387">barrierTask3</a> (std::shared_ptr&lt; <a class="el" href="class_barrier.html">Barrier</a> &gt; theBarrier, int numLoops)</td></tr>
+<tr class="memdesc:a7bb21cc2f9b91b3c1da6c9da90543387"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will have a given number of threads (num_threads) enter and all threads will print out their number and wait until all have arrived before each print out a "B" and then loop around and do it again.  <a href="main_8cpp.html#a7bb21cc2f9b91b3c1da6c9da90543387">More...</a><br /></td></tr>
+<tr class="separator:a7bb21cc2f9b91b3c1da6c9da90543387"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="memdesc:a840291bc02cba5474a4cb46a9b9566fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ever famous main function that runs our driver to show off barriers.  <a href="main_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe">More...</a><br /></td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,7 +164,7 @@ Reusable Barriers</h2></td></tr>
 </dl>
 <p>Each thread enters and prints out its unique number to the screen then using a mutex lock each thread in turn will increment the global variable barrier count and check to see if they are the last thread to this section (if (barrierCount == num_threads)) all other threads but the last thread will wait at the first "first-&gt;Wait()" until the last thread meets the if statments condition (if (barrierCount == num_threads)). The last thread will then signal first and each thread will wake the previous Then we repeat the same steps to see tha last thread to get to the second section with the conditional if (barrierCount == 0) the last thread in here will wake up a sleeping thread and everyone will move on again to the next loop </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00042">42</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00036">36</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
 </div>
 </div>
@@ -199,9 +202,49 @@ Reusable Barriers</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>The loop starts and each thread will perform the first task and wait at the first barrier-&gt;wait() call until all threads have done the first part THey will then proceede to to the second part waiting at the second barrier-&gt;wait() for all threads to complete, before any threads move on to a new loop </p>
+<p>The loop starts and each thread will perform the first task and wait at the first barrier-&gt;phaseOne() call until all threads have done the first part THey will then proceede to to the second part waiting at the second barrier-&gt;phaseTwo() for all threads to complete, before any threads move on to a new loop </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00087">87</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00081">81</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7bb21cc2f9b91b3c1da6c9da90543387"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bb21cc2f9b91b3c1da6c9da90543387">&#9670;&nbsp;</a></span>barrierTask3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void barrierTask3 </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_barrier.html">Barrier</a> &gt;&#160;</td>
+          <td class="paramname"><em>theBarrier</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numLoops</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function will have a given number of threads (num_threads) enter and all threads will print out their number and wait until all have arrived before each print out a "B" and then loop around and do it again. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">theBarrier</td><td>a reusable barrier to organise a rendezvous between n threads </td></tr>
+    <tr><td class="paramname">numLoops</td><td>the number of loops to be performed within this function</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The loop starts and each thread will perform the first task and wait at the first barrier-&gt;wait() call until all threads have done the first part before looping back </p>
+
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00104">104</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
 </div>
 </div>
@@ -222,9 +265,9 @@ Reusable Barriers</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The ever famous main function that runs our driver to show off barriers. </p>
-<p>We create a vector of threads, size determined by the global variable num_threads Instansiate Semaphores to use in the barrierless function <a class="el" href="main_8cpp.html#a8699d5ff27b11cd94c3e2a948c70195e" title="This function will have a given number of threads (num_threads) enter and all threads will print out ...">barrierTask1()</a> Instansiate a <a class="el" href="class_barrier.html">Barrier</a> to be used in the barrier function <a class="el" href="main_8cpp.html#acd48ef61d965767341cd126b0dcb9e9d" title="This function will have a given number of threads (num_threads) enter and all threads will print out ...">barrierTask2()</a>, it takes the num_threads as an arguement Instansiate a int i to be used as a counter for our threads in <a class="el" href="main_8cpp.html#a8699d5ff27b11cd94c3e2a948c70195e" title="This function will have a given number of threads (num_threads) enter and all threads will print out ...">barrierTask1()</a> and a int barrierCount to keep track of our threads in <a class="el" href="main_8cpp.html#a8699d5ff27b11cd94c3e2a948c70195e" title="This function will have a given number of threads (num_threads) enter and all threads will print out ...">barrierTask1()</a> also First loop runs the <a class="el" href="main_8cpp.html#a8699d5ff27b11cd94c3e2a948c70195e" title="This function will have a given number of threads (num_threads) enter and all threads will print out ...">barrierTask1()</a> with the provided semaphores and int i on all the threads in our vector of threads and joins threads together once it finishes Second loop uses the same vector of threads to run <a class="el" href="main_8cpp.html#acd48ef61d965767341cd126b0dcb9e9d" title="This function will have a given number of threads (num_threads) enter and all threads will print out ...">barrierTask2()</a> that takes the aBarrier as its <a class="el" href="class_barrier.html">Barrier</a> and an integer for how many times the function will loop and joins the threads together once finished </p>
+<p>We create a vector of threads, size determined by the global variable num_threads Instansiate Semaphores to use in the barrierless function <a class="el" href="main_8cpp.html#a8699d5ff27b11cd94c3e2a948c70195e" title="This function will have a given number of threads (num_threads) enter and all threads will print out ...">barrierTask1()</a> Instansiate a <a class="el" href="class_barrier.html" title="An Implementation of a Reusable Barriers using Semaphores.">Barrier</a> to be used in the barrier function <a class="el" href="main_8cpp.html#acd48ef61d965767341cd126b0dcb9e9d" title="This function will have a given number of threads (num_threads) enter and all threads will print out ...">barrierTask2()</a>, it takes the num_threads as an arguement Instansiate a int i to be used as a counter for our threads in <a class="el" href="main_8cpp.html#a8699d5ff27b11cd94c3e2a948c70195e" title="This function will have a given number of threads (num_threads) enter and all threads will print out ...">barrierTask1()</a> and a int barrierCount to keep track of our threads in <a class="el" href="main_8cpp.html#a8699d5ff27b11cd94c3e2a948c70195e" title="This function will have a given number of threads (num_threads) enter and all threads will print out ...">barrierTask1()</a> also First loop runs the <a class="el" href="main_8cpp.html#a8699d5ff27b11cd94c3e2a948c70195e" title="This function will have a given number of threads (num_threads) enter and all threads will print out ...">barrierTask1()</a> with the provided semaphores and int i on all the threads in our vector of threads and joins threads together once it finishes Second loop uses the same vector of threads to run <a class="el" href="main_8cpp.html#acd48ef61d965767341cd126b0dcb9e9d" title="This function will have a given number of threads (num_threads) enter and all threads will print out ...">barrierTask2()</a> that takes the aBarrier as its <a class="el" href="class_barrier.html" title="An Implementation of a Reusable Barriers using Semaphores.">Barrier</a> and an integer for how many times the function will loop and joins the threads together once finished </p>
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00114">114</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00128">128</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
 </div>
 </div>
@@ -241,7 +284,7 @@ Reusable Barriers</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00023">23</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00017">17</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
 </div>
 </div>

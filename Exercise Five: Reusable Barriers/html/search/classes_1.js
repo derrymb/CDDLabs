@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reusable_21',['Reusable',['../class_reusable.html',1,'']]]
+  ['semaphore_21',['Semaphore',['../class_semaphore.html',1,'']]]
 ];

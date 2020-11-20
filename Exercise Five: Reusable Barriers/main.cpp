@@ -3,7 +3,7 @@
     \date 19/11/2020
     \copyright This code is covered by the GNU General Public License v3.0
     \name Reusable Barriers
-    
+
     Uses C++11 features such as mutex and condition variables to implement Semaphores in thread functions 
     Example of how to achieve mutual exclusion achieved with a semaphore
 */
@@ -12,12 +12,6 @@
 #include <iostream>
 #include <thread>
 #include <vector>
-/*! \class Reusable Barriers
-    \brief An Implementation of a Reusable Barriers using Semaphores
-
-    Using C++ Semaphores to make a mutex and a turnstile to construct a reusable barrier
-    to allow the rendezvous of N threads that will work inside a loop
-*/
 
 static const int num_threads = 10;
 int barrierCount;
@@ -81,8 +75,8 @@ void barrierTask1(std::shared_ptr<Semaphore> mutex, std::shared_ptr<Semaphore> f
     \param theBarrier a reusable barrier to organise a rendezvous between n threads
     \param numLoops the number of loops to be performed within this function
 
-    The loop starts and each thread will perform the first task and wait at the first barrier->wait() call until all threads have done the first part
-    THey will then proceede to to the second part waiting at the second barrier->wait() for all threads to complete, before any threads move on to a new loop
+    The loop starts and each thread will perform the first task and wait at the first barrier->phaseOne() call until all threads have done the first part
+    THey will then proceede to to the second part waiting at the second barrier->phaseTwo() for all threads to complete, before any threads move on to a new loop
 */
 void barrierTask2(std::shared_ptr<Barrier> theBarrier, int numLoops){
 
@@ -90,12 +84,32 @@ void barrierTask2(std::shared_ptr<Barrier> theBarrier, int numLoops){
     //Do first bit of task
     std::cout << "A";
     //Barrier
-    theBarrier->wait();
+    theBarrier->phaseOne();
     //Do second half of task
     std::cout<< "B";
     //Barrier
+    theBarrier->phaseTwo();
+  }
+}
+
+/*! \fn void barrierTask3(std::shared_ptr<Barrier> theBarrier, int numLoops)
+    \brief This function will have a given number of threads (num_threads) enter and all threads will print out their number and wait until all have arrived 
+    before each print out a "B" and then loop around and do it again
+    \param theBarrier a reusable barrier to organise a rendezvous between n threads
+    \param numLoops the number of loops to be performed within this function
+
+    The loop starts and each thread will perform the first task and wait at the first barrier->wait() call 
+    until all threads have done the first part before looping back
+*/
+void barrierTask3(std::shared_ptr<Barrier> theBarrier, int numLoops){
+
+  for(int i=0;i<numLoops;++i){
+    //Do first bit of task
+    std::cout << i;
+    //Barrier
     theBarrier->wait();
   }
+  
 }
 
 /*! \fn int main(void)
@@ -131,6 +145,14 @@ int main(void)
   for(std::thread& t: vt)
   {
     t=std::thread(barrierTask2, aBarrier, 5);
+  }
+  for(auto& v :vt)
+  {
+    v.join();
+  }
+  for(std::thread& t: vt)
+  {
+    t=std::thread(barrierTask3, aBarrier, 5);
   }
   for(auto& v :vt)
   {

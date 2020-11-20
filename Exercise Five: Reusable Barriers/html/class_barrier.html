@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('class_barrier.html',''); initResizable
 </div><!--header-->
 <div class="contents">
 
+<p>An Implementation of a Reusable Barriers using Semaphores.  
+ <a href="class_barrier.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_barrier_8h_source.html">Barrier.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -113,7 +116,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a63271a70390e6680b07d7e701ff6b2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
+<div class="textblock"><p>An Implementation of a Reusable Barriers using Semaphores. </p>
+<p>Using C++ Semaphores to make a mutex and a turnstile to construct a reusable barrier to allow the rendezvous of N threads that will work inside a loop </p>
+
 <p class="definition">Definition at line <a class="el" href="_barrier_8h_source.html#l00026">26</a> of file <a class="el" href="_barrier_8h_source.html">Barrier.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4d825874d4435fb6d7c741fa4d2b540d"></a>
@@ -168,9 +173,9 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>destructor function of barrier </p>
-<p><a class="el" href="class_barrier.html">Barrier</a> destructor </p>
+<p><a class="el" href="class_barrier.html" title="An Implementation of a Reusable Barriers using Semaphores.">Barrier</a> destructor </p>
 
-<p class="definition">Definition at line <a class="el" href="_barrier_8cpp_source.html#l00027">27</a> of file <a class="el" href="_barrier_8cpp_source.html">Barrier.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barrier_8cpp_source.html#l00033">33</a> of file <a class="el" href="_barrier_8cpp_source.html">Barrier.cpp</a>.</p>
 
 </div>
 </div>
@@ -193,7 +198,7 @@ Public Member Functions</h2></td></tr>
 <p>The first phase of the rendezvous between n threads. </p>
 <p>Using semaphores and mutex lock order the flow of all threads to wait at the end for the last thread to be ready before moving on </p>
 
-<p class="definition">Definition at line <a class="el" href="_barrier_8cpp_source.html#l00037">37</a> of file <a class="el" href="_barrier_8cpp_source.html">Barrier.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barrier_8cpp_source.html#l00043">43</a> of file <a class="el" href="_barrier_8cpp_source.html">Barrier.cpp</a>.</p>
 
 </div>
 </div>
@@ -215,7 +220,7 @@ Public Member Functions</h2></td></tr>
 <p>The second phase of the rendezvous between n threads. </p>
 <p>sing semaphores and mutex lock order the flow of all threads to wait at the end for the last thread to be ready before moving on </p>
 
-<p class="definition">Definition at line <a class="el" href="_barrier_8cpp_source.html#l00057">57</a> of file <a class="el" href="_barrier_8cpp_source.html">Barrier.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barrier_8cpp_source.html#l00063">63</a> of file <a class="el" href="_barrier_8cpp_source.html">Barrier.cpp</a>.</p>
 
 </div>
 </div>
@@ -236,7 +241,7 @@ Public Member Functions</h2></td></tr>
 
 <p>The wait function runs <a class="el" href="class_barrier.html#a35c899565ad8db3425aed11daf4f09bd" title="The first phase of the rendezvous between n threads.">phaseOne()</a> and <a class="el" href="class_barrier.html#a63271a70390e6680b07d7e701ff6b2e3" title="The second phase of the rendezvous between n threads.">phaseTwo()</a> sequentially. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barrier_8cpp_source.html#l00079">79</a> of file <a class="el" href="_barrier_8cpp_source.html">Barrier.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barrier_8cpp_source.html#l00085">85</a> of file <a class="el" href="_barrier_8cpp_source.html">Barrier.cpp</a>.</p>
 
 </div>
 </div>
