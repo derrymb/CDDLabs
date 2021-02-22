@@ -1,3 +1,15 @@
+/*! \mainpage Prime Pairs Concurrency
+    \author Derry Brennan 
+    \date 11/02/2021
+    \copyright This code is covered by the GNU General Public License v3.0
+    \name Prime Pairs
+
+    Using C++ and OpenMP to have a program calculate the prime numbers up until N and then find the prime pairs out of those
+    Prime numbers, a prime pair is two prime numbers that are exactly 2 different from each other, e.g 3&5 or 5&7
+    The calculations will be preformed concurrently using openmp to spin up threads and preak the computations up into chunks
+    of the appropriate size for the number of threads. The program is timed to check the scalability of it as both the amount
+    of numbers being calculated and the amount of threads preforming these calculations increase
+*/
 #include <vector>
 #include <cmath>
 #include <algorithm>

@@ -1,9 +1,16 @@
+/*! \mainpage Prime Pairs Concurrency
+    \author Derry Brennan 
+    \date 11/02/2021
+    \copyright This code is covered by the GNU General Public License v3.0
+    \name Prime Pairs
+
+*/
 // C++ program to prlong long primes smaller than n using 
 // Sieve of Sundaram. 
 #include <bits/stdc++.h> 
 using namespace std; 
 
-// Prlong longs all prime numbers smaller 
+//long longs all prime numbers smaller 
 void SieveOfSundaram(long long n) 
 { 
 	// In general Sieve of Sundaram, produces primes smaller 

@@ -1,3 +1,9 @@
+/*! \mainpage Prime Pairs Concurrency
+    \author Derry Brennan 
+    \date 11/02/2021
+    \copyright This code is covered by the GNU General Public License v3.0
+    \name Prime Pairs
+*/
 // C++ program for implementation of Sieve of Atkin 
 #include <bits/stdc++.h> 
 #include <math.h>
