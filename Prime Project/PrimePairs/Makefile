@@ -7,13 +7,13 @@
 
 CC = g++
 CFLAGS = -std=c++11 -fopenmp
-OBJFILES = ppFast.o
+OBJFILES = multiThreadPrimePair.o
 #This rule says that each .o file depends on a .cpp file of the same name
 %.o: %.cpp
 	$(CC) -c -o $@ $< $(CFLAGS) $(DEBUGFLAGS)
 
 ALL: $(OBJFILES)
-	$(CC) -o ppFast $(OBJFILES) $(CFLAGS) $(DEBUGFLAGS)
+	$(CC) -o multiThreadPrimePair $(OBJFILES) $(CFLAGS) $(DEBUGFLAGS)
 
 DEBUG: DEBUGFLAGS = -DDEBUG -Wall
 DEBUG: ALL

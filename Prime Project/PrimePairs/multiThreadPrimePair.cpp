@@ -37,7 +37,7 @@ vector<int> primepairs;
 */
 void calculatePrime(int n)
 {
-    #pragma omp parallel for schedule(dynamic) num_threads(1) //shared (primes)
+    #pragma omp parallel for schedule(dynamic) //num_threads(2048) 
     for(int i = 2; i <= n; i++)
     {
         bool not_prime = false;
@@ -114,9 +114,9 @@ void printPairs()
 */
 int main(void)
 {
-    int number;
-    cout << "Enter a number to calculate the Prime Pairs up until: \n";
-    cin >> number;
+    int number = 1000000;
+    //cout << "Enter a number to calculate the Prime Pairs up until: \n";
+    //cin >> number;
     auto startTime = std::chrono::high_resolution_clock::now();
     calculatePrime(number);
     sort(primes.begin(), primes.end());
